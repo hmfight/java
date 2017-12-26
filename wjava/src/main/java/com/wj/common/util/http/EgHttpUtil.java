@@ -38,14 +38,12 @@ public class EgHttpUtil {
     private static final Logger LOGGER = LoggerFactory.getLogger(EgHttpUtil.class);
     private static final String PRE_SCHEME_HTTP = "http://";
     private static final String PRE_SCHEME_HTTPS = "https://";
-
-    private static Charset DEFAULT_ENCODE = Charset.forName("UTF-8");
     private static final String CONTENT_TYPE_APP_JSON = "application/json";
+    private static final Charset DEFAULT_ENCODE = Charset.forName("UTF-8");
+
     private static final int DEFAULT_RETRY_TIMES = 3;
     private static final RequestConfig DEFAULT_CONFIG;
-
     private static final HttpParams timeParams = new BasicHttpParams();
-
     private static final int SOCKET_TIME_OUT = 5000;
     private static final int CONN_TIME_OUT = 5000;
 
