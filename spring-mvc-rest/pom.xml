@@ -95,7 +95,7 @@
             <version>1.2.1</version>
             <scope>provided</scope>
         </dependency>
-        <!--aop-->
+        <!--log-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -130,7 +130,6 @@
             <version>1.4.182</version>
             <scope>test</scope>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
