@@ -10,14 +10,10 @@ import java.lang.reflect.Proxy;
  * JDK 动态代理
  */
 public class JdkCommonProxy implements InvocationHandler {
+    /**
+     * 被代理对象
+     */
     private Object target;
-
-    @SuppressWarnings("unchecked")
-    public <T> T bind(Object target, Class<T> interfaces) {
-        this.target = target;
-        return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(),
-                new Class[]{interfaces}, this);
-    }
 
     public Object bind(Object target) {
         this.target = target;
@@ -40,6 +36,5 @@ public class JdkCommonProxy implements InvocationHandler {
     private void doBefore() {
         System.out.println("common before");
     }
-
 
 }
