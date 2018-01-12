@@ -9,7 +9,7 @@ import java.lang.reflect.Proxy;
  * @time : 2018/1/11 19:35
  * JDK 动态代理
  */
-public class DyWorkerProxy implements InvocationHandler {
+public class JdkCommonProxy implements InvocationHandler {
     private Object target;
 
     @SuppressWarnings("unchecked")
@@ -17,6 +17,12 @@ public class DyWorkerProxy implements InvocationHandler {
         this.target = target;
         return (T) Proxy.newProxyInstance(target.getClass().getClassLoader(),
                 new Class[]{interfaces}, this);
+    }
+
+    public Object bind(Object target) {
+        this.target = target;
+        return Proxy.newProxyInstance(target.getClass().getClassLoader(),
+                target.getClass().getInterfaces(), this);
     }
 
     @Override

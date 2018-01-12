@@ -9,4 +9,9 @@ public class Teacher implements Human {
     public void eat() {
         System.out.println(" teacher eat");
     }
+
+    @Override
+    public void sleep() {
+        System.out.println(" teacher eat");
+    }
 }

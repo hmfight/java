@@ -6,4 +6,6 @@ package com.wj.proxy.targets;
  */
 public interface Human {
     void eat();
+
+    void sleep();
 }
