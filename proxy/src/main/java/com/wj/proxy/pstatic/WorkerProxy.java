@@ -16,9 +16,9 @@ public class WorkerProxy implements Worker {
     }
 
     @Override
-    public void workPrepare() {
+    public void work() {
         System.out.println("before");
-        robotWorker.workPrepare();
+        robotWorker.work();
         System.out.println("after");
     }
 

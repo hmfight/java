@@ -20,17 +20,17 @@ public class ProxyTest {
     @Test
     public void tessStatic() throws Exception {
         Worker worker = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker.workPrepare();
+        worker.work();
         ProxyUtils.generateClassFile(worker.getClass(), "ReadWorkerProxy");
     }
 
     @Test
     public void testDynamicProxy() throws Exception {
         Worker worker = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker.workPrepare();
+        worker.work();
 
         Worker worker2 = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker2.workPrepare();
+        worker2.work();
     }
 
     /**
@@ -51,7 +51,7 @@ public class ProxyTest {
     public void testCglib() throws Exception {
         CglibCommonProxy cglib = new CglibCommonProxy();
         RobotWorker worker = (RobotWorker) cglib.getInstance(new RobotWorker());
-        worker.workPrepare();
+        worker.work();
     }
 
     /**

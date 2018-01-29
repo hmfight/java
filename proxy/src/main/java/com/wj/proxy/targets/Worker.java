@@ -6,6 +6,6 @@ package com.wj.proxy.targets;
  */
 public interface Worker {
 
-    void workPrepare();
+    void work();
 
 }

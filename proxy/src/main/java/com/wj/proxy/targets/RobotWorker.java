@@ -6,8 +6,8 @@ package com.wj.proxy.targets;
  */
 public class RobotWorker implements Worker {
     @Override
-    public void workPrepare() {
-        System.out.println("workPrepare!");
+    public void work() {
+        System.out.println("work!");
     }
 
 }
