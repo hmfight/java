@@ -3,9 +3,9 @@ package com.wj.proxy.test;
 import com.wj.proxy.cglib.CglibCommonProxy;
 import com.wj.proxy.jdkdynamic.JdkCommonProxy;
 import com.wj.proxy.targets.Human;
-import com.wj.proxy.targets.RobotWorker;
+import com.wj.proxy.targets.Seller12306;
 import com.wj.proxy.targets.Teacher;
-import com.wj.proxy.targets.Worker;
+import com.wj.proxy.targets.TicketSeller;
 import com.wj.proxy.utils.ProxyUtils;
 import org.junit.Test;
 
@@ -19,18 +19,19 @@ public class ProxyTest {
      */
     @Test
     public void tessStatic() throws Exception {
-        Worker worker = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker.work();
-        ProxyUtils.generateClassFile(worker.getClass(), "ReadWorkerProxy");
+        TicketSeller seller = (TicketSeller) new JdkCommonProxy().bind(new Seller12306() {
+        });
+        seller.query();
+        ProxyUtils.generateClassFile(seller.getClass(), "ReadWorkerProxy");
     }
 
     @Test
     public void testDynamicProxy() throws Exception {
-        Worker worker = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker.work();
+        TicketSeller worker = (TicketSeller) new JdkCommonProxy().bind(new Seller12306());
+        worker.query();
 
-        Worker worker2 = (Worker) new JdkCommonProxy().bind(new RobotWorker());
-        worker2.work();
+        TicketSeller worker2 = (TicketSeller) new JdkCommonProxy().bind(new Seller12306());
+        worker2.query();
     }
 
     /**
@@ -47,12 +48,12 @@ public class ProxyTest {
     /**
      * cglib
      */
-    @Test
-    public void testCglib() throws Exception {
-        CglibCommonProxy cglib = new CglibCommonProxy();
-        RobotWorker worker = (RobotWorker) cglib.getInstance(new RobotWorker());
-        worker.work();
-    }
+//    @Test
+//    public void testCglib() throws Exception {
+//        CglibCommonProxy cglib = new CglibCommonProxy();
+//        RobotWorker worker = (RobotWorker) cglib.getInstance(new Ti());
+//        worker.work();
+//    }
 
     /**
      * cglib

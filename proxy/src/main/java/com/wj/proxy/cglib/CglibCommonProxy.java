@@ -41,11 +41,11 @@ public class CglibCommonProxy implements MethodInterceptor {
     }
 
     private void doAfter() {
-        System.out.println("common after");
+        System.out.println("**********************");
     }
 
     private void doBefore() {
-        System.out.println("common before");
+        System.out.println("**********************");
     }
 
 }
