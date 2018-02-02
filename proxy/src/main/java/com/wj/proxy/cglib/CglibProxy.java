@@ -11,7 +11,7 @@ import java.lang.reflect.Method;
  * @time : 2018/1/11 19:35
  * JDK 动态代理
  */
-public class CglibCommonProxy implements MethodInterceptor {
+public class CglibProxy implements MethodInterceptor {
 
     /**
      * 被代理对象，供代理方法中进行真正的业务方法调用
@@ -40,12 +40,12 @@ public class CglibCommonProxy implements MethodInterceptor {
         return result;
     }
 
-    private void doAfter() {
-        System.out.println("**********************");
+    private void doBefore() {
+        System.out.println("**********before************");
     }
 
-    private void doBefore() {
-        System.out.println("**********************");
+    private void doAfter() {
+        System.out.println("***********after***********");
     }
 
 }

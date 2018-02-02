@@ -1,6 +1,6 @@
 package com.wj.proxy.test;
 
-import com.wj.proxy.cglib.CglibCommonProxy;
+import com.wj.proxy.cglib.CglibProxy;
 import com.wj.proxy.jdkdynamic.JdkCommonProxy;
 import com.wj.proxy.targets.Human;
 import com.wj.proxy.targets.Seller12306;
@@ -50,7 +50,7 @@ public class ProxyTest {
      */
 //    @Test
 //    public void testCglib() throws Exception {
-//        CglibCommonProxy cglib = new CglibCommonProxy();
+//        CglibProxy cglib = new CglibProxy();
 //        RobotWorker worker = (RobotWorker) cglib.getInstance(new Ti());
 //        worker.work();
 //    }
@@ -60,7 +60,7 @@ public class ProxyTest {
      */
     @Test
     public void testCglib2() throws Exception {
-        CglibCommonProxy cglib = new CglibCommonProxy();
+        CglibProxy cglib = new CglibProxy();
         Teacher teacher = (Teacher) cglib.getInstance(new Teacher());
         teacher.eat();
     }
