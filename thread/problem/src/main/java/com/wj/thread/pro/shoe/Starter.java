@@ -17,16 +17,17 @@ import java.util.ArrayList;
  */
 public class Starter {
     private static final int WORKER_NUM = 98;
-    private static final int MANAGER_NUM = 1;
-    private static final int PACKER_NUM = 1;
+//    private static final int MANAGER_NUM = 1;
+//    private static final int PACKER_NUM = 1;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         ShoeHolder shoeHolder = new ShoeHolder(new ArrayList<>(), new ArrayList<>());
 
-        new Packer(shoeHolder).work();
         new Manager(shoeHolder).work();
         for (int i = 0; i < WORKER_NUM; i++) {
             new Worker(shoeHolder, i).work();
         }
+        Thread.sleep(3000);
+        new Packer(shoeHolder).work();
     }
 }

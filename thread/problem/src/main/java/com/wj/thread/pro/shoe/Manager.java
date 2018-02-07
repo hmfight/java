@@ -1,5 +1,8 @@
 package com.wj.thread.pro.shoe;
 
+import static com.wj.thread.pro.shoe.Shoe.LEFT;
+import static com.wj.thread.pro.shoe.Shoe.RIGHT;
+
 /**
  * @author : wangjia
  * @time : 2018/2/6 13:39
@@ -18,11 +21,14 @@ public class Manager extends Thread {
     @Override
     public void run() {
         while (true) {
-//            System.out.println(" manager work ");
-            if (shoeHolder.leftSize() <= shoeHolder.rightSize()) {
-                shoeHolder.changeNext(ShoeHolder.LEFT);
+            int leftSize = shoeHolder.leftSize();
+            int rightSize = shoeHolder.rightSize();
+            System.out.println(" left shoe :" + leftSize);
+            System.out.println(" right shoe :" + rightSize);
+            if (leftSize <= rightSize) {
+                shoeHolder.changeNext(LEFT);
             } else {
-                shoeHolder.changeNext(ShoeHolder.RIGHT);
+                shoeHolder.changeNext(RIGHT);
             }
         }
     }

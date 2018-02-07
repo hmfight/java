@@ -2,13 +2,13 @@ package com.wj.thread.pro.shoe;
 
 import java.util.List;
 
+import static com.wj.thread.pro.shoe.Shoe.LEFT;
+
 /**
  * @author : wangjia
  * @time : 2018/2/6 13:42
  */
 public class ShoeHolder {
-    public static final int LEFT = 1;
-    public static final int RIGHT = 2;
 
     private List<Shoe> left;
     private List<Shoe> right;

@@ -18,11 +18,6 @@ public class Packer extends Thread {
     @Override
     public void run() {
         while (true) {
-            try {
-                sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
             if (shoeHolder.existPair()) {
                 packPair(shoeHolder);
             } else {
@@ -34,7 +29,7 @@ public class Packer extends Thread {
     private void packPair(ShoeHolder shoeHolder) {
         System.out.println("packer packing ");
         try {
-            sleep(3000);
+            sleep(500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
