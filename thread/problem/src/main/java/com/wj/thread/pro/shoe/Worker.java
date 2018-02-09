@@ -1,5 +1,7 @@
 package com.wj.thread.pro.shoe;
 
+import java.util.concurrent.atomic.AtomicLong;
+
 import static com.wj.thread.pro.shoe.Shoe.LEFT;
 import static com.wj.thread.pro.shoe.Shoe.RIGHT;
 
@@ -8,6 +10,8 @@ import static com.wj.thread.pro.shoe.Shoe.RIGHT;
  * @time : 2018/2/6 13:37
  */
 public class Worker extends Thread {
+    public static volatile AtomicLong allShowNum = new AtomicLong();
+
     private ShoeHolder shoeHolder;
     private int workerId;
 
@@ -17,7 +21,7 @@ public class Worker extends Thread {
     }
 
     public void work() {
-        run();
+        this.start();
     }
 
     @Override
@@ -25,27 +29,29 @@ public class Worker extends Thread {
         while (true) {
             if (shoeHolder.getNext() == LEFT) {
                 productLeftShoe();
+                sleep(3);
             } else {
                 productRightShoe();
+                sleep(2);
             }
         }
     }
 
     private void productLeftShoe() {
-        System.out.println("worker " + workerId + " producting left shoe ");
+        System.out.println("worker " + workerId + " are producting shoe(left) ");
         shoeHolder.addLeft(new Shoe(LEFT));
-        sleep();
+        allShowNum.addAndGet(1);
     }
 
     private void productRightShoe() {
-        System.out.println("worker " + workerId + " producting right shoe ");
+        System.out.println("worker " + workerId + " are producting show(right) ");
         shoeHolder.addRight(new Shoe(RIGHT));
-        sleep();
+        allShowNum.addAndGet(1);
     }
 
-    private void sleep() {
+    private void sleep(int seconds) {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(seconds * 1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

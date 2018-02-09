@@ -5,6 +5,7 @@ package com.wj.thread.pro.shoe;
  * @time : 2018/2/6 13:40
  */
 public class Packer extends Thread {
+    private int nowPairs = 0;
     private ShoeHolder shoeHolder;
 
     public Packer(ShoeHolder shoeHolder) {
@@ -12,7 +13,7 @@ public class Packer extends Thread {
     }
 
     public void work() {
-        run();
+        start();
     }
 
     @Override
@@ -20,21 +21,23 @@ public class Packer extends Thread {
         while (true) {
             if (shoeHolder.existPair()) {
                 packPair(shoeHolder);
-            } else {
-                System.out.println(" no pair ");
             }
         }
     }
 
     private void packPair(ShoeHolder shoeHolder) {
-        System.out.println("packer packing ");
+        System.out.println("all shoe num:" + Worker.allShowNum.get() + "; packed:" + nowPairs + " pairs;" + " now left:"
+                + shoeHolder.leftSize() + ", now right:" + shoeHolder.rightSize());
         try {
-            sleep(500);
+            sleep(100);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        shoeHolder.rmLeft();
-        shoeHolder.rmRight();
+        nowPairs++;
+        if (shoeHolder.existPair()) {
+            shoeHolder.rmLeft();
+            shoeHolder.rmRight();
+        }
     }
 
 }

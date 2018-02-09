@@ -9,7 +9,6 @@ import static com.wj.thread.pro.shoe.Shoe.LEFT;
  * @time : 2018/2/6 13:42
  */
 public class ShoeHolder {
-
     private List<Shoe> left;
     private List<Shoe> right;
     private volatile int next = LEFT;
@@ -32,7 +31,7 @@ public class ShoeHolder {
     }
 
     public void rmRight() {
-        left.remove(0);
+        right.remove(0);
     }
 
     public int leftSize() {
@@ -54,4 +53,5 @@ public class ShoeHolder {
     public boolean existPair() {
         return leftSize() > 0 && rightSize() > 0;
     }
+
 }

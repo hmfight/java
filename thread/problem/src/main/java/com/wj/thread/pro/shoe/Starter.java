@@ -1,6 +1,6 @@
 package com.wj.thread.pro.shoe;
 
-import java.util.ArrayList;
+import java.util.Vector;
 
 /**
  * @author : wangjia
@@ -17,17 +17,15 @@ import java.util.ArrayList;
  */
 public class Starter {
     private static final int WORKER_NUM = 98;
-//    private static final int MANAGER_NUM = 1;
-//    private static final int PACKER_NUM = 1;
 
     public static void main(String[] args) throws InterruptedException {
-        ShoeHolder shoeHolder = new ShoeHolder(new ArrayList<>(), new ArrayList<>());
+        ShoeHolder shoeHolder = new ShoeHolder(new Vector<>(), new Vector<>());
 
         new Manager(shoeHolder).work();
+        new Packer(shoeHolder).work();
         for (int i = 0; i < WORKER_NUM; i++) {
+            Thread.sleep(100);
             new Worker(shoeHolder, i).work();
         }
-        Thread.sleep(3000);
-        new Packer(shoeHolder).work();
     }
 }

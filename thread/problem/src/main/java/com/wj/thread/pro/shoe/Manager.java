@@ -15,7 +15,7 @@ public class Manager extends Thread {
     }
 
     public void work() {
-        run();
+        start();
     }
 
     @Override
@@ -23,8 +23,6 @@ public class Manager extends Thread {
         while (true) {
             int leftSize = shoeHolder.leftSize();
             int rightSize = shoeHolder.rightSize();
-            System.out.println(" left shoe :" + leftSize);
-            System.out.println(" right shoe :" + rightSize);
             if (leftSize <= rightSize) {
                 shoeHolder.changeNext(LEFT);
             } else {
