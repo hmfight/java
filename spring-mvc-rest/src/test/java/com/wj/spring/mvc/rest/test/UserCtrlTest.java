@@ -1,6 +1,8 @@
 package com.wj.spring.mvc.rest.test;
 
+import com.wj.spring.mvc.rest.test.util.EgTestCase;
 import com.wj.spring.mvc.rest.test.util.EgTestUtils;
+import com.wj.spring.mvc.rest.test.util.ResponseUtils;
 import com.wj.spring.mvc.rest.util.EnumCommonErrorCode;
 import com.wj.spring.mvc.rest.util.EnumUserErrorCode;
 import org.junit.Before;
@@ -13,6 +15,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.test.util.AssertionErrors;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -60,6 +63,27 @@ public class UserCtrlTest {
         String loginRes = apiTestCaseFactory.login("loginwest", "111111", EnumCommonErrorCode.SUCCESS).run();
         LOGGER.info(loginRes);
         apiTestCaseFactory.login("loginwest", "222222", EnumUserErrorCode.NAME_OR_PW_ERROR).run();
+    }
+
+    @Test
+    public void testUserRegisterAndLogin2() throws Exception {
+        String realLoginName = "loginwest";
+        new EgTestCase(mockMvc).request(EgReqFactory.regist(realLoginName, "111111"))
+                .expect(EnumCommonErrorCode.SUCCESS)
+                .run();
+        new EgTestCase(mockMvc).request(EgReqFactory.regist(realLoginName, "111111"))
+                .expect(EnumUserErrorCode.NAME_EXIST)
+                .run();
+        new EgTestCase(mockMvc).request(EgReqFactory.login("noexist", "111111"))
+                .expect(EnumUserErrorCode.NAME_OR_PW_ERROR)
+                .run();
+        new EgTestCase(mockMvc).request(EgReqFactory.login(realLoginName, "12312312"))
+                .expect(EnumUserErrorCode.NAME_OR_PW_ERROR)
+                .run();
+        String loginRes = new EgTestCase(mockMvc).request(EgReqFactory.login(realLoginName, "111111"))
+                .expect(EnumCommonErrorCode.SUCCESS)
+                .run();
+        AssertionErrors.assertEquals("loginName", realLoginName, ResponseUtils.getResCycle(loginRes, "user", "username"));
     }
 
 }

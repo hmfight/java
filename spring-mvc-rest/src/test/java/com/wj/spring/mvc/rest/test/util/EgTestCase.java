@@ -1,6 +1,7 @@
 package com.wj.spring.mvc.rest.test.util;
 
 import com.wj.spring.mvc.rest.test.EgTestApiRequest;
+import com.wj.spring.mvc.rest.util.IEgReturnCode;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
@@ -21,7 +22,7 @@ import static org.springframework.test.util.AssertionErrors.assertEquals;
 public class EgTestCase {
     private EgTestApiRequest egTestApiRequest;
     private MockMvc mockMvc;
-    private int expectCode;
+    private int expectCode = 0;
 
     public EgTestCase(EgTestApiRequest egTestApiRequest, MockMvc mockMvc, int expectCode) {
         this.egTestApiRequest = egTestApiRequest;
@@ -29,8 +30,36 @@ public class EgTestCase {
         this.expectCode = expectCode;
     }
 
+    public static EgTestCase build(MockMvc mockMvc) {
+        return new EgTestCase(mockMvc);
+    }
+
+    public EgTestCase(MockMvc mockMvc) {
+        this.mockMvc = mockMvc;
+    }
+
+    public EgTestCase(EgTestApiRequest egTestApiRequest, MockMvc mockMvc) {
+        this.egTestApiRequest = egTestApiRequest;
+        this.mockMvc = mockMvc;
+    }
+
+    public EgTestCase request(EgTestApiRequest egTestApiRequest) {
+        this.egTestApiRequest = egTestApiRequest;
+        return this;
+    }
+
     public RequestMethod getApiMethod() {
         return egTestApiRequest.getRequestMethod();
+    }
+
+    public EgTestCase expect(IEgReturnCode egReturnCode) {
+        this.expectCode = egReturnCode.getCode();
+        return this;
+    }
+
+    public EgTestCase expect(int expectCode) {
+        this.expectCode = expectCode;
+        return this;
     }
 
     public String getApiPath() {

@@ -27,6 +27,15 @@ public class ApiTestCaseFactory {
         return new EgTestCase(egTestApiRequest, mockMvc, egReturnCode.getCode());
     }
 
+    public EgTestCase regist(String username, String password) {
+        HashMap<String, String> apiParams = new HashMap<>();
+        apiParams.put("username", username);
+        apiParams.put("password", password);
+        String apiPath = "/user/regist";
+        EgTestApiRequest egTestApiRequest = new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
+        return new EgTestCase(egTestApiRequest, mockMvc);
+    }
+
     public EgTestCase login(String username, String password, IEgReturnCode egReturnCode) {
         HashMap<String, String> apiParams = new HashMap<>();
         apiParams.put("username", username);
@@ -35,6 +44,5 @@ public class ApiTestCaseFactory {
         EgTestApiRequest egTestApiRequest = new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
         return new EgTestCase(egTestApiRequest, mockMvc, egReturnCode.getCode());
     }
-
 
 }

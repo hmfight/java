@@ -34,4 +34,13 @@ public class ResponseUtils {
         return result;
     }
 
+    public static String getResCycle(String res, String... keys) {
+        String result = JSON.parseObject(res).get(EgWebUtils.PayloadKey).toString();
+        for (String key : keys) {
+            result = JSON.parseObject(result).get(key).toString();
+        }
+        return result;
+    }
+
+
 }
