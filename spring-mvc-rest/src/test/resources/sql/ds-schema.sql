@@ -5,3 +5,4 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`uid`),
   UNIQUE KEY uk_username(username)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+TRUNCATE TABLE user;

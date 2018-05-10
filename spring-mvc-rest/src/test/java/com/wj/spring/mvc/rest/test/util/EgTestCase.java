@@ -62,6 +62,10 @@ public class EgTestCase {
         return this;
     }
 
+    public int getExpectCode() {
+        return expectCode;
+    }
+
     public String getApiPath() {
         return egTestApiRequest.getApiPath();
     }
