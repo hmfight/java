@@ -21,10 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.WebApplicationContext;
-
-import java.util.HashMap;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 
@@ -166,6 +163,19 @@ public class UserCtrlTest {
                 .expect(EnumCommonErrorCode.SUCCESS)
                 .run();
         AssertionErrors.assertEquals("loginName", realLoginName, ResponseUtils.getResCycle(loginRes, "user", "username"));
+    }
+
+    @Test
+    public void testGetAll() throws Exception {
+        new EgTestCase(mockMvc).request(EgReqFactory.regist("wangjia1", "111111"))
+                .expect(EnumCommonErrorCode.SUCCESS)
+                .run();
+        new EgTestCase(mockMvc).request(EgReqFactory.regist("wangjia2", "111111"))
+                .expect(EnumCommonErrorCode.SUCCESS)
+                .run();
+        new EgTestCase(mockMvc).request(EgReqFactory.getall())
+                .expect(EnumCommonErrorCode.SUCCESS)
+                .run();
     }
 
 }

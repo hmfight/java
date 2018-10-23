@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-/**
- * @author : wangjia_yql@qq.com
- * @time : 2017/12/25 22:40
- */
+import java.util.List;
+
+
 @RestController
 @RequestMapping("/user")
 public class UserCtrl {
@@ -36,5 +35,12 @@ public class UserCtrl {
         User user = userService.login(username, password);
         return EgWebUtils.createCommonResultJSON("user", user);
     }
+
+    @RequestMapping(value = "/all")
+    public String all() {
+        List<User> users = userService.getAll();
+        return EgWebUtils.createCommonResultJSON("user", users);
+    }
+
 
 }

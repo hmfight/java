@@ -26,4 +26,9 @@ public class EgReqFactory {
         return new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
     }
 
+    public static EgTestApiRequest getall() {
+        HashMap<String, String> apiParams = new HashMap<>();
+        String apiPath = "/user/all";
+        return new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
+    }
 }
