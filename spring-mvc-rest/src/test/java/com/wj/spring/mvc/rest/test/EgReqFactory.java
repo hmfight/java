@@ -1,6 +1,7 @@
 package com.wj.spring.mvc.rest.test;
 
 import org.springframework.web.bind.annotation.RequestMethod;
+import sun.rmi.rmic.Names;
 
 import java.util.HashMap;
 
@@ -26,4 +27,10 @@ public class EgReqFactory {
         return new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
     }
 
+    public static EgTestApiRequest getByNames(String namesJson) {
+        HashMap<String, String> apiParams = new HashMap<>();
+        apiParams.put("names", namesJson);
+        String apiPath = "/user/all";
+        return new EgTestApiRequest(apiPath, RequestMethod.POST, apiParams);
+    }
 }

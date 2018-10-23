@@ -6,6 +6,8 @@ import com.wj.spring.mvc.rest.util.EgException;
 import com.wj.spring.mvc.rest.util.EnumUserErrorCode;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.List;
+
 /**
  * @author : wangjia
  * @time : 2017/12/25 23:14
@@ -36,8 +38,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User login(String username, String password) {
-        return userDao.get(username, password).orElseThrow(
+        return userDao.getByNamedParameter(username, password).orElseThrow(
                 () -> new EgException(EnumUserErrorCode.NAME_OR_PW_ERROR)
         );
+    }
+
+    @Override
+    public List<User> getByNames(List<String> names) {
+        return userDao.getAll(names);
     }
 }
