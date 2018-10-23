@@ -1,9 +1,12 @@
 package com.wj.springmybatis.test;
 
 import com.wj.springmybatis.service.UserService;
+import com.wj.springmybatis.model.TestUser;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Date;
 
 /**
  * @author : wangjia
@@ -25,10 +28,10 @@ public class MyTest {
         userService.get(4);
     }
 
-//    @Test
-//    public void testIns() throws Exception {
-//        UserService userService = (UserService) context.getBean("userService");
-//        TestUser testUser = new TestUser("t" + new Date().getTime() / 1000, 11, "email", 123213);
-//        userService.ins(testUser);
-//    }
+    @Test
+    public void testIns() throws Exception {
+        UserService userService = (UserService) context.getBean("userService");
+        TestUser testUser = new TestUser("t" + new Date().getTime() / 1000, 11, "email", 123213);
+        userService.ins(testUser);
+    }
 }

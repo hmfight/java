@@ -2,7 +2,6 @@ package com.wj.spring.mvc.rest.dao;
 
 import com.wj.spring.mvc.rest.model.User;
 
-import java.util.List;
 import java.util.Optional;
 
 /**
@@ -15,8 +14,4 @@ public interface UserDao {
     boolean existName(String username);
 
     Optional<User> get(String username, String password);
-
-    List<User> getAll(List<String> usernames);
-
-    Optional<User> getByNamedParameter(String username, String password);
 }

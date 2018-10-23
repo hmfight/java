@@ -1,7 +1,6 @@
 package com.wj.spring.mvc.rest.model;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.sun.scenario.effect.impl.prism.PrImage;
 
 /**
  * @author : wangjia
