@@ -25,7 +25,6 @@ public class TestOOM {
         while (true) {
             Thread.sleep(300);
             list.add(new BigObject());
-            System.out.println(counter++);
             log.info("{}",counter++);
         }
     }

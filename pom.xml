@@ -13,8 +13,11 @@
         <module>base</module>
         <module>util</module>
         <module>proxy</module>
+        <module>middleware</module>
+        <module>spring</module>
         <module>practice</module>
     </modules>
+    <packaging>pom</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <org.log4j.version>1.2.14</org.log4j.version>
