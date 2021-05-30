@@ -9,8 +9,8 @@
         <property name="mapperLocations" value="classpath:mappers/*.xml"/>
     </bean>
     <bean name="mapperScannerConfigurer" class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.wj.springmybatis.dao"/>
+        <property name="basePackage" value="com.wangjia.springmybatis.dao"/>
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
     </bean>
-    <bean id="userService" class="com.wj.springmybatis.service.UserServiceImpl"/>
+    <bean id="userService" class="com.wangjia.springmybatis.service.UserServiceImpl"/>
 </beans>

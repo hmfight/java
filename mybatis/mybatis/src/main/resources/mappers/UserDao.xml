@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wj.mybatis.dao.UserDao">
-    <resultMap id="userResMap" type="com.wj.mybatis.model.TestUser">
+<mapper namespace="com.wangjia.mybatis.dao.UserDao">
+    <resultMap id="userResMap" type="com.wangjia.mybatis.model.TestUser">
         <id property="id" column="id"/>
         <result property="age" column="age"/>
         <result property="userName" column="user_name"/>
@@ -17,7 +17,7 @@
         user_name, age, email, create_time
     </sql>
 
-    <select id="getById" resultType="com.wj.mybatis.model.TestUser" resultMap="userResMap" parameterType="java.lang.Long">
+    <select id="getById" resultType="com.wangjia.mybatis.model.TestUser" resultMap="userResMap" parameterType="java.lang.Long">
         select
         <include refid="all_column"/>
         from test_user
@@ -29,7 +29,7 @@
         <include refid="all_column"/>
         from test_user
     </select>
-    <select id="getById2" resultType="com.wj.mybatis.model.TestUser">
+    <select id="getById2" resultType="com.wangjia.mybatis.model.TestUser">
 
     </select>
 
