@@ -3,18 +3,12 @@ package com.wangjia.spring;
 import com.wangjia.spring.beans.Human;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Created by wangjia on 16/3/2 15:16
  */
 public class Main {
 
     public static void main(String[] args) {
-        String tets = "dsds";
-        List<String> strings = Arrays.asList(tets.split("\\|"));
-        strings.forEach(System.out::println);
         method("classpath:aop-hand-context.xml");
     }
 
