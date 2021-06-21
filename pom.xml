@@ -16,7 +16,6 @@
         <module>middleware</module>
         <module>spring</module>
         <module>netty</module>
-        <module>frame</module>
         <module>practice</module>
     </modules>
     <packaging>pom</packaging>
